@@ -1,5 +1,5 @@
 """
-Sari I. Younan
+NeuroThermals
 12/02/2024 20:59:06
 tmp102.py
 """
