@@ -1,11 +1,11 @@
 """
 NeuroThermals
-12/02/2024 20:59:06
+22/02/2024 10:10:06
 tmp102.py
 """
 
 import time
-import smbus
+import smbus2
 
 i2c_ch = 1
 
@@ -18,20 +18,20 @@ reg_config = 0x01
 
 
 # Calculate the 2's complement of a number
-def twos_comp(val, bits):
-    if (val & (1 << (bits - 1))) != 0:
-        val = val - (1 << bits)
-    return val
+def twos_comp(vals, bits):
+    if (vals & (1 << (bits - 1))) != 0:
+        vals = vals - (1 << bits)
+    return vals
 
 
 # Read temperature registers and calculate Celsius
 def read_temp():
     # Read temperature registers
-    val = bus.read_i2c_block_data(i2c_address, reg_temp, 2)
+    value = bus.read_i2c_block_data(i2c_address, reg_temp, 2)
     # NOTE: val[0] = MSB byte 1, val [1] = LSB byte 2
     # print ("!shifted val[0] = ", bin(val[0]), "val[1] = ", bin(val[1]))
 
-    temp_c = (val[0] << 4) | (val[1] >> 4)
+    temp_c = (value[0] << 4) | (value[1] >> 4)
     # print (" shifted val[0] = ", bin(val[0] << 4), "val[1] = ", bin(val[1] >> 4))
     # print (bin(temp_c))
 
@@ -45,7 +45,7 @@ def read_temp():
 
 
 # Initialize I2C (SMBus)
-bus = smbus.SMBus(i2c_ch)
+bus = smbus2.SMBus(i2c_ch)
 
 # Read the CONFIG register (2 bytes)
 val = bus.read_i2c_block_data(i2c_address, reg_config, 2)
