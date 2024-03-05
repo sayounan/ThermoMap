@@ -5,14 +5,11 @@
  *      Author: angoosh
  */
 
+#include <stdint.h>
 #include "AS6221.h"
 #include "main.h"
 
 extern I2C_HandleTypeDef AS6221_I2C_HANDLE;
-
-float AS6221_Read_Temperature();
-int AS6221_Register(SETUP_REG reg, uint8_t value, ACCESS_OP rw);
-
 
  /*
   * @brief Reads temperature measured by sensor
