@@ -1,0 +1,3 @@
+/Users/syounan/Documents/GitHub/ThermoMap/C++/cmake-build-debug/CMakeFiles/AS6221.dir
+/Users/syounan/Documents/GitHub/ThermoMap/C++/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/syounan/Documents/GitHub/ThermoMap/C++/cmake-build-debug/CMakeFiles/rebuild_cache.dir
