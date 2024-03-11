@@ -20,11 +20,12 @@ class TMP102 {
 private:
     int file_i2c;
     int addr;
+    int len;
     unsigned char buffer[60];
 
     void readConfig();
     void writeConfig();
-    int twosComp(int vals, int bits);
+    // int twosComp(int vals, int bits); // Unused due to the tempC lines
 
 public:
     TMP102 (const char *filename, int address);

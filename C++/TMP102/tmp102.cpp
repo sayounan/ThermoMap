@@ -6,7 +6,7 @@ tmp102.cpp
 
 #include "tmp102.h"
 
-TMP102::TMP102(const char *filename, int address) : addr(address){
+TMP102::TMP102(const char *filename, int address) : addr(address), len(), buffer(){
     if ((file_i2c = open(filename, O_RDWR)) < 0) {
         cerr << "Failed to open the i2c bus" << endl;
         throw runtime_error("Failed to open the i2c bus");
@@ -50,7 +50,7 @@ float TMP102::readTemp() {
     if (tempC > 2047) {
         tempC -= 4096;
     }
-    return tempC * 0.0625;
+    return static_cast<float>(tempC * 0.0625);
 }
 
 void TMP102::readConfig() {
@@ -71,18 +71,30 @@ void TMP102::writeConfig() {
     }
 }
 
+volatile sig_atomic_t running = true;
+
+void signalHandle(int sig) {
+    if (sig == SIGINT) {
+        running = false;
+    }
+}
+
 int main() {
     const char *filename = "/dev/i2c-1";
     int address = 0x48;  // TMP address on I2C bus
 
+    signal(SIGINT, signalHandle);
+
     TMP102 tmp102(filename, address);
     tmp102.initialize();
 
-    while (true) {
+    while (running) {
         float temp = tmp102.readTemp();
         cout << temp << " ˚C" <<endl;
         sleep(1);
+
     }
 
     return 0;
+
 }
