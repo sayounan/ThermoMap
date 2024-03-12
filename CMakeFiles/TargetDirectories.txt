@@ -1,0 +1,2 @@
+/Users/syounan/Documents/GitHub/ThermoMap/CMakeFiles/edit_cache.dir
+/Users/syounan/Documents/GitHub/ThermoMap/CMakeFiles/rebuild_cache.dir
