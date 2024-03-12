@@ -819,7 +819,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "Test"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1143,6 +1143,42 @@
 		},
 		{
 			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102"
+		},
+		{
+			"name" : "Test_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102/cmake-build-debug"
+		},
+		{
+			"name" : "Test_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Test_SOURCE_DIR",
 			"properties" : 
 			[
 				{

@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/syounan/Documents/GitHub/ThermoMap/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
