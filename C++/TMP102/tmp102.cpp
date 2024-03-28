@@ -6,6 +6,8 @@ tmp102.cpp
 
 #include "tmp102.h"
 
+
+
 TMP102::TMP102(const char *filename, int address) : addr(address), len(), buffer(){
     if ((file_i2c = open(filename, O_RDWR)) < 0) {
         cerr << "Failed to open the i2c bus" << endl;
@@ -90,8 +92,8 @@ int main() {
 
     while (running) {
         float temp = tmp102.readTemp();
-        cout << temp << " ˚C" <<endl;
-        sleep(1);
+        cout << temp << "˚C" <<endl;
+        this_thread::sleep_for(chrono::milliseconds(250));
 
     }
 

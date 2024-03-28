@@ -13,6 +13,9 @@ tmp102.h
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
+#include <signal.h>
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
