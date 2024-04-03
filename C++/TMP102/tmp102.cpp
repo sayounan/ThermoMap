@@ -7,7 +7,6 @@ tmp102.cpp
 #include "tmp102.h"
 
 
-
 TMP102::TMP102(const char *filename, int address) : addr(address), len(), buffer(){
     if ((file_i2c = open(filename, O_RDWR)) < 0) {
         cerr << "Failed to open the i2c bus" << endl;
@@ -83,7 +82,51 @@ void signalHandle(int sig) {
 
 int main() {
     const char *filename = "/dev/i2c-1";
-    int address = 0x48;  // TMP address on I2C bus
+
+    // TMP address on I2C bus, server file descriptor, new socket, buffer
+    int address = 0x48, serverFd, newSocket, valread;
+    struct sockaddr_in addr = {};
+    int opt = 1;
+    int addrlen = sizeof(addr);
+    char buffer[1024] = {0};
+    const char *hello = "Test from server";
+
+    if ((serverFd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        perror("Socket initialization failed: Could not create socket file descriptor.");
+        exit(EXIT_FAILURE);
+    }
+
+    if (setsockopt(serverFd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {
+        char setsockerr[250] = "Socket attachment failed: Could not attach socket to port ";
+        snprintf(setsockerr, sizeof(setsockerr), "%s: %d", setsockerr, PORT);
+        perror(setsockerr);
+        exit(EXIT_FAILURE);
+    }
+    addr.sin_family = AF_INET;
+    addr.sin_addr.s_addr = INADDR_ANY;
+    addr.sin_port = htons(PORT);
+
+    if(bind(serverFd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
+        char bindsockerr[250] = "Socket binding failed: Could not bind socket to port ";
+        snprintf(bindsockerr, sizeof(bindsockerr), "%s: %d", bindsockerr, PORT);
+        perror(bindsockerr);
+        exit(EXIT_FAILURE);
+    }
+
+    if(listen(serverFd, 3) < 0) {
+        perror("Listen failed: Could not listen on specified port. Check fd assignment.");
+        exit(EXIT_FAILURE);
+    }
+
+    if((newSocket = accept(serverFd, (struct sockaddr *)&addr, (socklen_t*)&addrlen)) < 0) {
+        perror("Could not accept new socket assignment.");
+        exit(EXIT_FAILURE);
+    }
+
+    valread = read(newSocket, buffer, 1024);
+    printf("%s\n", buffer);
+    send(newSocket, hello, strlen(hello), 0);  // Change this line after testing
+    printf("Message sent");
 
     signal(SIGINT, signalHandle);
 
