@@ -11,6 +11,7 @@ tmp102.h
 #include <chrono>
 #include <csignal>
 #include <cstdio>
+#include <cstring>
 #include <fcntl.h>
 #include <iostream>
 #include <linux/i2c-dev.h>
