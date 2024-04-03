@@ -120,6 +120,8 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+    cout << "Waiting for client..." << endl;
+
     if((newSocket = accept(serverFd, (struct sockaddr *)&addr, (socklen_t*)&addrlen)) < 0) {
         perror("Could not accept new socket assignment.");
         exit(EXIT_FAILURE);
@@ -129,6 +131,9 @@ int main() {
     printf("%s\n", buffer);
     send(newSocket, hello, strlen(hello), 0);  // Change this line after testing
     printf("Message sent");
+
+    close(newSocket);
+    close(serverFd);
 
     signal(SIGINT, signalHandle);
 
