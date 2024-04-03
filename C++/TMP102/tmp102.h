@@ -8,19 +8,14 @@ tmp102.h
 #define THERMOMAP_TMP102_H
 
 #include <bitset>
-#include <chrono>
-#include <csignal>
-#include <cstdio>
-#include <fcntl.h>
 #include <iostream>
-#include <linux/i2c-dev.h>
-#include <netinet/in.h>
-#include <sys/ioctl.h>
-#include <sys/socket.h>
-#include <thread>
 #include <unistd.h>
-
-#define PORT 8080
+#include <fcntl.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+#include <signal.h>
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
@@ -33,6 +28,7 @@ private:
 
     void readConfig();
     void writeConfig();
+    // int twosComp(int vals, int bits); // Unused due to the tempC lines
 
 public:
     TMP102 (const char *filename, int address);
