@@ -97,8 +97,9 @@ int main() {
     }
 
     if (setsockopt(serverFd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {
-        char setsockerr[250] = "Socket attachment failed: Could not attach socket to port ";
-        snprintf(setsockerr, sizeof(setsockerr), "%s: %d", setsockerr, PORT);
+        char setsockerr[250];
+        snprintf(setsockerr, sizeof(setsockerr), \
+        "Socket attachment failed: Could not attach socket to port: %d", PORT);
         perror(setsockerr);
         exit(EXIT_FAILURE);
     }
@@ -107,8 +108,9 @@ int main() {
     addr.sin_port = htons(PORT);
 
     if(bind(serverFd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
-        char bindsockerr[250] = "Socket binding failed: Could not bind socket to port ";
-        snprintf(bindsockerr, sizeof(bindsockerr), "%s: %d", bindsockerr, PORT);
+        char bindsockerr[250];
+        snprintf(bindsockerr, sizeof(bindsockerr), \
+        "Socket binding failed: Could not bind socket to port: %d", PORT);
         perror(bindsockerr);
         exit(EXIT_FAILURE);
     }
