@@ -134,6 +134,7 @@ int main() {
 
     valread = read(newSocket, buffer, 1024);
     printf("%s\n", buffer);
+    system("ThermoMap GUI.exe");
 
     while (running) {
         float temp = tmp102.readTemp();
