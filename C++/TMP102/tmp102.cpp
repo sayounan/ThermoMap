@@ -127,25 +127,25 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    valread = read(newSocket, buffer, 1024);
-    printf("%s\n", buffer);
-    send(newSocket, hello, strlen(hello), 0);  // Change this line after testing
-    printf("Message sent");
-
-    close(newSocket);
-    close(serverFd);
-
     signal(SIGINT, signalHandle);
 
     TMP102 tmp102(filename, address);
     tmp102.initialize();
 
+    valread = read(newSocket, buffer, 1024);
+    printf("%s\n", buffer);
+
     while (running) {
         float temp = tmp102.readTemp();
-        cout << temp << "˚C" <<endl;
+        string tempStr = to_string(temp);
+        send(newSocket, tempStr.c_str(), tempStr.length(), 0);
+        // cout << temp << "˚C" <<endl;
         this_thread::sleep_for(chrono::milliseconds(250));
 
     }
+
+    close(newSocket);
+    close(serverFd);
 
     return 0;
 
