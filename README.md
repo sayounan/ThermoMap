@@ -3,13 +3,13 @@
 ThermoMap is software built to continue the work of a previous year's design named Thermectrode. The intended use is to
 monitor the internal temperature of the brain during radio frequency (RF) ablation procedures in the brain to treat drug
 resistant epilepsy (DRE). The Thermectrode was a thermistor embedded stereo-electroencephalograph (sEEG) that can 
-monitor brain temperature during while also reading EEG data. The Thermectrode fed the analog signal to an external 
-circuit that filtered the signal and passed it onto a data acquisition device which then passed it onto a computer via 
-USB protocol. This was then displayed as a graph along with a numerical temperature reading. The ThermoMap team 
-downsized the hardware significantly by replacing the analog circuits, data acquisition device, and computer with a 
-digital temperature sensor connected directly to the Raspberry Pi general purpose input/output (GPIO). Another 
-advantage of digitizing the circuit is the ability to run the RF ablator while maintaining the ability to read the data 
-without any interference in the signal by RF noise.
+monitor brain temperature while also reading EEG data during neuro-ablation procedures. The Thermectrode fed the analog 
+signal to an external circuit that filtered the signal and passed it onto a data acquisition device which then passed it 
+onto a computer via USB protocol. This was then displayed as a graph along with a numerical temperature reading. The 
+ThermoMap team downsized the hardware significantly by replacing the analog circuits, data acquisition device, and 
+computer with a digital temperature sensor connected directly to the Raspberry Pi general purpose input/output (GPIO). 
+Another advantage of digitizing the circuit is the ability to run the RF ablator while maintaining the ability to read 
+the data without any interference in the signal by RF noise.
 ## Introduction
 The ThermoMap software is designed to give clinicians all the important information during a neuro-ablation procedure at
 a glance. The software shows the real time heat transfer within the brain overlaid on patient computerized tomography 
