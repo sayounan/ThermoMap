@@ -8,7 +8,7 @@ Thermectrode fed the analog signal to an external circuit that filtered the sign
 device which then passed it onto a computer via USB protocol. This was then displayed as a graph along with a numerical 
 temperature reading. 
 ## Introduction
-The ThermoMap team began by overhauling the hardware to a digital circuitry. The primary purpose of this change was to 
+The ThermoMap team began by overhauling the hardware to digital circuitry. The primary purpose of this change was to 
 make the signal resistant to external electric or electromagnetic noise. An added benefit of the switch to digital 
 circuitry was that the overhaul downsized the hardware significantly. The overhaul replaced the thermistor, the external
 signal filtering circuit, data acquisition device, and computer with a digital temperature sensor embedded Printed 
