@@ -20,7 +20,7 @@ behavior (motion in the x, y, z directions and time) of the heat radiating outwa
 depicted as realtime expanding concentric spheres, color coded to correspond to the temperature increase within each 
 sphere.
 ### Hardware Setup
-![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/Passing-temp/Media/READMEMedia/GPIO-Pinout-Diagram-2.png)
+![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/Passing-temp/Media/README%20Media/GPIO-Pinout-Diagram-2.png)
 #### Sensor &harr; Raspberry Pi GPIO Pins
 * VCC &harr; 3V3 Power
 * GND &harr; Ground
