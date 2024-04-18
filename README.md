@@ -15,7 +15,7 @@ signal filtering circuit, data acquisition device, and computer with a digital t
 Circuit Board (PCB) connected directly to the Raspberry Pi's general purpose input/output (GPIO) pins. The ThermoMap 
 software is designed to give clinicians all the important information during a neuro-ablation procedure at a glance. The
 software shows the real time heat transfer within the brain overlaid on patient Magnetic Resonance Imaging (MRI) scans. 
-The software reads the temperature data from the point of digital sensor and is able to model the the four dimensional 
+The software reads the temperature data from the point of digital sensor and is able to model the four dimensional 
 behavior (motion in the x, y, z directions and time) of the heat radiating outward within the brain. The temperature is 
 depicted as realtime expanding concentric spheres, color coded to correspond to the temperature increase within each 
 sphere.
