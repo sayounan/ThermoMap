@@ -27,7 +27,8 @@ sphere.
 * SCL &harr; GPIO 3 (SCL)
 #### Clinical Sensor Placement
 * Sensor is already embedded within the RF ablator.
-### Dependancies
+### Dependencies
+Mono is needed to run .exe programs on Unix based systems like Linux and Mac
 #### Linux: [The Mono Project](https://www.mono-project.com)
 ```angular2html
 sudo apt install dirmngr ca-certificates gnupg
