@@ -56,7 +56,7 @@ float AS6221::readTemp() const {
     tempRaw = ((buffer[0] << 8) | buffer[1]);
 
     // Convert to temperature in degrees Celsius
-    auto temperature = static_cast<float>(tempRaw * 0.005); // AS6221 has a resolution of 0.005 degrees Celsius
+    auto temperature = static_cast<float>(tempRaw * 0.0078125); // AS6221 has a resolution of 0.005 degrees Celsius
 
     return temperature;
 }
