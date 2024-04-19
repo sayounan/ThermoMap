@@ -138,7 +138,6 @@ int main() {
     AS6221 as6221(filename, address);
     as6221.initialize();
 
-    // valread = read(newSocket, buffer, 1024);
     printf("%s\n", buffer);
     system("ThermoMap GUI.exe");
 
@@ -148,10 +147,8 @@ int main() {
         send(newSocket, tempStr.c_str(), tempStr.length(), 0);
         this_thread::sleep_for(chrono::milliseconds(250));
     }
-
     close(newSocket);
     close(serverFd);
 
     return 0;
-
 }
