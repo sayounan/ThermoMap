@@ -1,3 +1,0 @@
-/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102/CMakeFiles/tmp102.dir
-/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102/CMakeFiles/edit_cache.dir
-/Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102/CMakeFiles/rebuild_cache.dir
