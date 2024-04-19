@@ -37,23 +37,23 @@ void AS6221::setSampRate(int rate) {
 }
 
 float AS6221::readTemp() const {
-    uint8_t buffer[2] = {0};
+    uint8_t buff[2] = {0};
     int16_t tempRaw;
 
     // Request temperature data
-    if (write(file_i2c, &buffer[0], 1) != 1) {
+    if (write(file_i2c, &buff[0], 1) != 1) {
         cerr << "Failed to write to i2c bus." << endl;
         return -1; // Return an error value
     }
 
     // Read temperature data
-    if (read(file_i2c, &buffer[0], 2) != 2) {
+    if (read(file_i2c, &buff[0], 2) != 2) {
         cerr << "Failed to read from i2c bus." << endl;
         return -1; // Return an error value
     }
 
     // Combine the two bytes into a 16-bit signed integer
-    tempRaw = ((buffer[0] << 8) | buffer[1]);
+    tempRaw = ((buff[0] << 8) | buff[1]);
 
     // Convert to temperature in degrees Celsius
     auto temperature = static_cast<float>(tempRaw * 0.0078125); // AS6221 has a resolution of 0.005 degrees Celsius
