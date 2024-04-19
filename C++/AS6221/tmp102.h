@@ -40,7 +40,7 @@ public:
     ~TMP102();
     void initialize();
     void setSampRate(int rate);
-    float readTemp();
+    float readTemp() const;
 
 };
 #endif //THERMOMAP_TMP102_H

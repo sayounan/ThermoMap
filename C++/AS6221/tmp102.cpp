@@ -36,22 +36,29 @@ void TMP102::setSampRate(int rate) {
     buffer[1] |= (rate << 6);
 }
 
-float TMP102::readTemp() {
-    buffer[0] = 0x00;
-    len = 1;
-    if (write(file_i2c, buffer, len) != len) {
-        cerr << "Failed to write/configure i2c bus." << endl;
-    }
-    len = 2;
-    if (read(file_i2c, buffer, len) != len) {
-        cerr << "Failed to read from i2c bus." << endl;
+float TMP102::readTemp() const {
+    uint8_t buffer[2] = {0};
+    int16_t tempRaw = 0;
+
+    // Request temperature data
+    if (write(file_i2c, &buffer[0], 1) != 1) {
+        cerr << "Failed to write to i2c bus." << endl;
+        return -1; // Return an error value
     }
 
-    int tempC = ((buffer[0] << 4) | (buffer[1] >> 4));
-    if (tempC > 2047) {
-        tempC -= 4096;
+    // Read temperature data
+    if (read(file_i2c, &buffer[0], 2) != 2) {
+        cerr << "Failed to read from i2c bus." << endl;
+        return -1; // Return an error value
     }
-    return static_cast<float>(tempC * 0.0625);
+
+    // Combine the two bytes into a 16-bit signed integer
+    tempRaw = ((buffer[0] << 8) | buffer[1]);
+
+    // Convert to temperature in degrees Celsius
+    float temperature = tempRaw * 0.005; // AS6221 has a resolution of 0.005 degrees Celsius
+
+    return temperature;
 }
 
 void TMP102::readConfig() {
