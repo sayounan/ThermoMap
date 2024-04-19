@@ -1,4 +1,4 @@
-# Install script for directory: /Users/syounan/Documents/GitHub/ThermoMap/C++/TMP102
+# Install script for directory: /Users/syounan/Documents/GitHub/ThermoMap/Programs/TMP102
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
