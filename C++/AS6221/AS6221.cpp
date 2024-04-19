@@ -4,10 +4,10 @@ Created by Sari I. Younan
 tmp102.cpp
 */
 
-#include "tmp102.h"
+#include "AS6221.h"
 
 
-TMP102::TMP102(const char *filename, int address) : addr(address), len(), buffer(){
+AS6221::AS6221(const char *filename, int address) : addr(address), len(), buffer(){
     if ((file_i2c = open(filename, O_RDWR)) < 0) {
         cerr << "Failed to open the i2c bus" << endl;
         throw runtime_error("Failed to open the i2c bus");
@@ -19,26 +19,26 @@ TMP102::TMP102(const char *filename, int address) : addr(address), len(), buffer
     }
 }
 
-TMP102::~TMP102() {
+AS6221::~AS6221() {
     close(file_i2c);
 }
 
-void TMP102::initialize() {
+void AS6221::initialize() {
     readConfig();
     setSampRate(4);  // Initializes sampling rate at 4 Hz (CR1, CR0 = 0b10)
     writeConfig();
     readConfig();  // Simply verifies that the previous line actually changed the config
 }
 
-void TMP102::setSampRate(int rate) {
+void AS6221::setSampRate(int rate) {
     readConfig();
     buffer[1] &= 0b00111111;
     buffer[1] |= (rate << 6);
 }
 
-float TMP102::readTemp() const {
+float AS6221::readTemp() const {
     uint8_t buffer[2] = {0};
-    int16_t tempRaw = 0;
+    int16_t tempRaw;
 
     // Request temperature data
     if (write(file_i2c, &buffer[0], 1) != 1) {
@@ -56,12 +56,12 @@ float TMP102::readTemp() const {
     tempRaw = ((buffer[0] << 8) | buffer[1]);
 
     // Convert to temperature in degrees Celsius
-    float temperature = tempRaw * 0.005; // AS6221 has a resolution of 0.005 degrees Celsius
+    auto temperature = static_cast<float>(tempRaw * 0.005); // AS6221 has a resolution of 0.005 degrees Celsius
 
     return temperature;
 }
 
-void TMP102::readConfig() {
+void AS6221::readConfig() {
     buffer[0] = 0x01;
     len = 1;
     if (write(file_i2c, buffer, len) != len) {
@@ -73,7 +73,7 @@ void TMP102::readConfig() {
     }
 }
 
-void TMP102::writeConfig() {
+void AS6221::writeConfig() {
     if (write(file_i2c, buffer, len) != len) {
          cerr << "Failed to write/configure i2c bus." << endl;
     }
@@ -96,7 +96,6 @@ int main() {
     int opt = 1;
     int addrlen = sizeof(addr);
     char buffer[1024] = {0};
-    const char *hello = "Test from server";
 
     if ((serverFd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("Socket initialization failed: Could not create socket file descriptor.");
@@ -136,20 +135,18 @@ int main() {
 
     signal(SIGINT, signalHandle);
 
-    TMP102 tmp102(filename, address);
-    tmp102.initialize();
+    AS6221 as6221(filename, address);
+    as6221.initialize();
 
     valread = read(newSocket, buffer, 1024);
     printf("%s\n", buffer);
     system("ThermoMap GUI.exe");
 
     while (running) {
-        float temp = tmp102.readTemp();
+        float temp = as6221.readTemp();
         string tempStr = to_string(temp);
         send(newSocket, tempStr.c_str(), tempStr.length(), 0);
-        // cout << temp << "˚C" <<endl;
         this_thread::sleep_for(chrono::milliseconds(250));
-
     }
 
     close(newSocket);

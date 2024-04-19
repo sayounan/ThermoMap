@@ -1,36 +1,46 @@
 /*
- * AS6221.h
- *
- *  Created on: Nov 15, 2021
- *      Author: angoosh
- */
+Created by Sari I. Younan
+05/03/2024 10:04:57
+tmp102.h
+*/
 
-#ifndef INC_AS6221_H_
-#define INC_AS6221_H_
+#ifndef THERMOMAP_AS6221_H
+#define THERMOMAP_AS6221_H
 
-#include "stm32l0xx_hal.h"
+#include <bitset>
+#include <chrono>
+#include <csignal>
+#include <cstdio>
+#include <cstring>
+#include <fcntl.h>
+#include <iostream>
+#include <linux/i2c-dev.h>
+#include <netinet/in.h>
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <thread>
+#include <unistd.h>
 
-#define AS6221_ADDRESS		0x48
-#define LSB					(double)0.0078125
+#define PORT 8080
 
-typedef enum {
-	AL = 0,
-	CR = 1,
-	SM = 2,
-	IM = 3,
-	POL = 4,
-	CF = 5,
-	SS = 6
-} SETUP_REG;
+using namespace std;
 
-typedef enum {
-	R = 0,
-	W = 1,
-	RW = 2
-} ACCESS_OP;
+class AS6221 {
+private:
+    int file_i2c;
+    int addr;
+    int len;
+    unsigned char buffer[60];
 
+    void readConfig();
+    void writeConfig();
 
-float AS6221_Read_Temperature();
-int AS6221_Register(SETUP_REG reg, uint8_t value, ACCESS_OP rw);
+public:
+    AS6221 (const char *filename, int address);
+    ~AS6221();
+    void initialize();
+    void setSampRate(int rate);
+    float readTemp() const;
 
-#endif /* INC_AS6221_H_ */
+};
+#endif //THERMOMAP_AS6221_H
