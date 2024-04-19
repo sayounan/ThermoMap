@@ -22,7 +22,7 @@ sphere.
 ### Hardware Setup
 ![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Raspberry-Pi-5-Pinout-.jpg)
 #### Sensor &harr; Raspberry Pi GPIO Pins
-* VCC &harr; 3V3 Power
+* VDD &harr; 3V3 Power
 * GND &harr; Ground
 * SDA &harr; GPIO 2 (SDA)
 * SCL &harr; GPIO 3 (SCL)
