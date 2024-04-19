@@ -46,6 +46,6 @@ sudo apt install mono-devel
 #### Windows: N/A
 ### Software Setup
 1. Open the executable file.
-2. Click the CT scan image to indicate the location of the heat source.
+2. Click the MRI scan image to indicate the location of the heat source.
 3. Click the "Start Ablation" button to indicate the start of the ablation procedure and begin displaying temperature 
 behavior.
