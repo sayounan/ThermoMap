@@ -53,7 +53,7 @@ float AS6221::readTemp() const {
     }
 
     // Combine the two bytes into a 16-bit signed integer
-    tempRaw = ((buff[0] << 8) | buff[1]);
+    tempRaw = static_cast<int16_t>((buff[0] << 8) | buff[1]);
 
     // Convert to temperature in degrees Celsius
     auto temperature = static_cast<float>(tempRaw * 0.0078125); // AS6221 has a resolution of 0.005 degrees Celsius
@@ -91,7 +91,7 @@ int main() {
     const char *filename = "/dev/i2c-1";
 
     // TMP address on I2C bus, server file descriptor, new socket, buffer
-    int address = 0x48, serverFd, newSocket, valread;
+    int address = 0x48, serverFd, newSocket;
     struct sockaddr_in addr = {};
     int opt = 1;
     int addrlen = sizeof(addr);
@@ -138,7 +138,7 @@ int main() {
     AS6221 as6221(filename, address);
     as6221.initialize();
 
-    valread = read(newSocket, buffer, 1024);
+    // valread = read(newSocket, buffer, 1024);
     printf("%s\n", buffer);
     system("ThermoMap GUI.exe");
 
