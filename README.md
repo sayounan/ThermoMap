@@ -58,7 +58,7 @@ dotnet --version
 
 [![Button Icon]][Link]
 
-[Link]: #'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
+[Link]: 'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
 [Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
 
 </blockquote></details>
@@ -67,7 +67,7 @@ dotnet --version
 
 [![Button Icon]][Link]
 
-[Link]: #'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
+[Link]: 'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
 [Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
 
 </blockquote></details>
