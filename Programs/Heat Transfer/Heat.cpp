@@ -6,14 +6,8 @@ Heat.cpp
 
 #include "Heat.h"
 
-const double alpha = 0.14558;  // thermal diffusivity
-const double dr = 0.1;      // radial distance step
-const double dt = 0.001;     // time step
-const int num_r = 20;      // number of radial points
-const double initial_temp = 24.0;  // initial temperature at r = 0
-const double ambient_temp = 15;  // ambient temperature within the brain
-
-void update_temperature(vector<double>& temp) {
+void update_temperature
+(vector<double>& temp, double alpha, double dr, double dt, int num_r, double initial_temp, double ambient_temp) {
     vector<double> new_temp(num_r, ambient_temp);
 
     // Apply Neumann boundary condition at the last radial point
@@ -28,15 +22,19 @@ void update_temperature(vector<double>& temp) {
     }
 
     new_temp[0] = initial_temp;
-    // Update r=0 assuming symmetry, derivative is zero
-    /*new_temp[0] = temp[0] + dt * alpha * (
-        (temp[1] - 2 * temp[0] + temp[1]) / (dr * dr)  // Symmetric condition
-    );*/
+
     temp = new_temp;
 }
 
 int main() {
-    // Initialize temperature array
+
+    const double alpha = 0.14558;  // thermal diffusivity
+    const double dr = 0.020;      // radial distance step
+    const double dt = 0.001;     // time step
+    const int num_r = 6;      // number of radial points
+    const double initial_temp = 24.0;  // initial temperature at r = 0
+    const double ambient_temp = 15;  // ambient temperature within the brain
+
     vector<double> temperature(num_r, ambient_temp);
 
     temperature[0] = initial_temp;
@@ -48,7 +46,7 @@ int main() {
         auto now = chrono::steady_clock::now();
         chrono::duration<double> elapsed = now - start;
 
-        update_temperature(temperature);
+        update_temperature(temperature, alpha, dr, dt, num_r, initial_temp, ambient_temp);
 
         // Print temperature profile for visualization (every second)
         if (static_cast<int>(elapsed.count()) % 1 == 0) {
