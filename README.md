@@ -56,25 +56,18 @@ dotnet --version
 
 <details><summary>MacOS</summary><blockquote>
 
-[![Button Icon]][Link]
-<!----------------------------------------------------------------------------->
-[Link]: 'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
-<!---------------------------------[ Buttons ]--------------------------------->
-[Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
+[Installer]('https://dotnet.microsoft.com/en-us/download/dotnet/8.0')
 
 </blockquote></details>
 
 <details><summary>Windows</summary><blockquote>
 
-[![Button Icon]][Link]
-
-[Link]: #'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
-[Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
+[Installer]('https://dotnet.microsoft.com/en-us/download/dotnet/8.0')
 
 </blockquote></details>
 
 ### Software Setup
-1. On your terminal, navigate to the directory containing the software.
+1. On your terminal, navigate to the directory containing the software. ```cd /Path/to/software/location```
 2. Run the following command: ```dotnet run```
 3. In your web browser enter ```localhost: 5232``` into the address bar and press enter.
 4. Click on "Connect"
