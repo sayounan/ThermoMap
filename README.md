@@ -34,7 +34,7 @@ sphere.
 <ins>**Click on your OS to get the corresponding .NET installation instructions.**</ins>
 
 <details><summary>Linux</summary><blockquote>
-<span style="color:red">**Ensure ssh is enabled before proceeding.**</span>
+**Ensure ssh is enabled before proceeding.**
 
 Install .NET:
 ```angular2html
