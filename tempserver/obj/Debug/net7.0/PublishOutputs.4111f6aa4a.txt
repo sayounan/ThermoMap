@@ -1,0 +1,7 @@
+/home/thermo/tempserver/bin/Debug/net7.0/publish/tempserver
+/home/thermo/tempserver/bin/Debug/net7.0/publish/appsettings.Development.json
+/home/thermo/tempserver/bin/Debug/net7.0/publish/appsettings.json
+/home/thermo/tempserver/bin/Debug/net7.0/publish/tempserver.dll
+/home/thermo/tempserver/bin/Debug/net7.0/publish/tempserver.deps.json
+/home/thermo/tempserver/bin/Debug/net7.0/publish/tempserver.runtimeconfig.json
+/home/thermo/tempserver/bin/Debug/net7.0/publish/tempserver.pdb

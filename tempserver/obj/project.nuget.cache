@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "RDJm83uGo+lPG6yotEZABK771heIjbr12LRWsTCbmu+hEq8jMYUvMjvlIFpT2s+KmNT5nr+fidVlVAilaPT7gw==",
+  "success": true,
+  "projectFilePath": "/home/thermo/tempserver/tempserver.csproj",
+  "expectedPackageFiles": [
+    "/home/thermo/.nuget/packages/microsoft.aspnetcore.authorization/5.0.0/microsoft.aspnetcore.authorization.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.aspnetcore.components/5.0.0/microsoft.aspnetcore.components.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.aspnetcore.components.analyzers/5.0.0/microsoft.aspnetcore.components.analyzers.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.aspnetcore.metadata/5.0.0/microsoft.aspnetcore.metadata.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "/home/thermo/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

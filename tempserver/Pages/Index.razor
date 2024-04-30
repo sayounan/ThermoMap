@@ -1,0 +1,211 @@
+﻿@page "/"
+
+@using System;
+@using System.Drawing;
+@using System.Runtime.InteropServices;
+@using System.Text.Json;
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<h1>ThermoMap</h1>
+<button class="btn btn-primary" @onclick="ToggleTemperatureReading">@(isReadingTemperature ? "Disconnect" : "Connect")</button>
+<br><br>
+<div style="position: center;">
+    <div style="width: 800px; height: 600px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" id="sagittalImage" style="cursor: pointer;" @onclick="HandleImageClick">
+        <defs>
+            <radialGradient id="temperatureGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color: @(GetColorString(GetColorForTemperature(currentTemp))); stop-opacity:1" />
+                <stop offset="50%" style="stop-color: @(GetColorString(MidColor(currentTemp, outermostColor))); stop-opacity:0.7" />
+                <stop offset="100%" style="stop-color: @(GetColorString(outermostColor)); stop-opacity:0" />
+            </radialGradient>
+        </defs>
+        <image xlink:href="Sagittal.jpeg" width="800" height="600" />
+        @if (clickedPosition != null)
+        {
+            <circle cx="@clickedPosition.Value.X" cy="@clickedPosition.Value.Y" r="100" fill="url(#temperatureGradient)" />
+        }
+    </svg>
+    </div>   
+    <svg xmlns="http://www.w3.org/2000/svg" width="800" height="20" style="position: center">
+            <defs>
+                <linearGradient id="colorBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color: @(GetColorString(Color.FromArgb(0, 0, 128)))" />
+                    <stop offset="17%" style="stop-color: @(GetColorString(Color.FromArgb(0, 0, 255)))" />
+                    <stop offset="34%" style="stop-color: @(GetColorString(Color.FromArgb(0, 255, 255)))" />
+                    <stop offset="51%" style="stop-color: @(GetColorString(Color.FromArgb(0, 255, 0)))" />
+                    <stop offset="68%" style="stop-color: @(GetColorString(Color.FromArgb(255, 255, 0)))" />
+                    <stop offset="100%" style="stop-color: @(GetColorString(Color.FromArgb(255, 0, 0)))" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#colorBarGradient)" />
+    </svg>
+</div>
+<br><br>
+<p>10<meter id="temp" value=@theTempC min="10" max="25" style="width: 100px"></meter>25 </p>
+<p>Temp is: @theTempC &#176C @theTempF &#176F </p>
+
+@code {
+    public double currentTemp = 0.0;
+    public double[] temp;
+    public double alpha = 0.14558;  // thermal diffusivity
+    public double dr = 0.020;      // radial distance step
+    public double dt = 0.001;     // time step
+    public int num_r = 6;      // number of radial points
+    public string theTempC = string.Empty;
+    public string theTempF = string.Empty;
+    int OPEN_READ_WRITE = 2;
+    string errorMessage = string.Empty;
+    bool isReadingTemperature = false;
+    PointF? clickedPosition;
+    Color outermostColor;
+    [DllImport("libc.so.6", EntryPoint = "open")]
+    private static extern int Open(string fileName, int mode);
+    [DllImport("libc.so.6", EntryPoint = "ioctl", SetLastError = true)]
+    private static extern int Ioctl(int fd, int request, int data);
+    [DllImport("libc.so.6", EntryPoint = "read", SetLastError = true)]
+    private static extern int Read(int handle, byte[] data, int length);
+    [DllImport("libc.so.6", EntryPoint = "write", SetLastError = true)]
+    private static extern int Write(int handle, byte[] data, int length);
+    public async Task ToggleTemperatureReading()
+    {
+        isReadingTemperature = !isReadingTemperature;
+
+        while (isReadingTemperature)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(0.25));
+            await GetTheTemp();
+        }
+    }
+    public void HandleImageClick(MouseEventArgs e)
+    {
+        // Store the clicked position
+        clickedPosition = new PointF((float)e.ClientX, (float)e.ClientY);
+
+        // Get temperature at clicked position
+        outermostColor = GetColorForTemperature(currentTemp);
+
+        // Refresh the UI
+        StateHasChanged();
+    }
+
+
+    public async Task GetTheTemp()
+    {
+        try
+        {
+            int I2C_CLIENT = 0x0703; // read from I2C device bus 1
+            int i2cHandle = Open("/dev/i2c-1", OPEN_READ_WRITE);
+            // open the device at address 0x1A for communication
+            int registerAddress = 0x48;
+            int deviceReturnCode = Ioctl(i2cHandle, I2C_CLIENT, registerAddress); //set byte 
+                                                                                  // arrays for specifying  the register and reading the data
+            byte[] deviceData = new byte[2];
+            byte[] reg = new byte[1];
+            //we have to tell it to read register 0x05
+            reg[0] = 0x0;
+            await Task.Run(() =>
+            {
+                deviceReturnCode = Write(i2cHandle, reg, 1);
+                //now we can read 2 bytes
+                deviceReturnCode = Read(i2cHandle, deviceData, deviceData.Length);
+            });
+            int msb = deviceData[0];  //most significant byte
+            int lsb = deviceData[1];  //least significant byte
+            //calculate according to the datasheet
+            msb = msb & 0x1F;
+            double tempc = (msb * 256) + lsb;
+            if (tempc > 4095)         //positive
+                tempc -= 8192;            //remove sign bit
+            tempc *= 0.0078125;
+            //and a little high school physics for F
+            double tempf = 32 + tempc * 9 / 5;
+            
+            // Calculate color based on temperature
+            currentTemp = tempc;
+            theTempC = currentTemp.ToString("F3");
+            theTempF = tempf.ToString("F3");
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.ToString();
+        }
+    }      
+    public Color GetColorForTemperature(double temperature)
+{
+    // Define a colormap like jet
+    Color[] colormap = {
+        Color.FromArgb(0, 0, 128),   // Dark blue
+        Color.FromArgb(0, 0, 255),   // Blue
+        Color.FromArgb(0, 255, 255), // Cyan
+        Color.FromArgb(0, 255, 0),   // Green
+        Color.FromArgb(255, 255, 0), // Yellow
+        Color.FromArgb(255, 0, 0)    // Red
+    };
+
+    // Define temperature range
+    double minTemperature = 10;
+    double maxTemperature = 25;
+
+    // Ensure temperature is within expected range
+    if (temperature > maxTemperature)
+    {
+        return colormap[colormap.Length - 1]; // Red for temperatures over max
+    }
+    else if (temperature < minTemperature)
+    {
+        return colormap[0]; // Dark blue for temperatures under min
+    }
+    else
+    {
+        // Calculate the ratio of temperature relative to min and max temperatures
+        double ratio = (temperature - minTemperature) / (maxTemperature - minTemperature);
+
+        // Map the ratio to the index of the colormap
+        int index = (int)Math.Floor(ratio * (colormap.Length - 1));
+
+        // Interpolate between the colors based on the ratio within the index range
+        Color color1 = colormap[index];
+        Color color2 = colormap[index + 1];
+        double subRatio = (ratio - (double)index / (colormap.Length - 1)) * (colormap.Length - 1);
+        int r = (int)(color1.R + (color2.R - color1.R) * subRatio);
+        int g = (int)(color1.G + (color2.G - color1.G) * subRatio);
+        int b = (int)(color1.B + (color2.B - color1.B) * subRatio);
+
+        return Color.FromArgb(r, g, b);
+    }
+}
+        public void UpdateTemperatureDistribution()
+        {
+            double[] newTemp = new double[num_r];
+
+            for (int i = 1; i < num_r - 1; ++i)
+            {
+                double r = i * dr;
+                newTemp[i] = temp[i] + dt * alpha * (
+                    (temp[i + 1] - 2 * temp[i] + temp[i - 1]) / (dr * dr) +
+                    (1 / r) * (temp[i + 1] - temp[i - 1]) / (2 * dr)
+                );
+            }
+
+            // Update the temperature array with the new values
+            temp = newTemp;
+        }
+
+    
+    private string GetColorString(Color color)
+    {
+        return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+    }
+    private Color MidColor(double temp1, Color color2)
+    {
+        Color color1 = GetColorForTemperature(temp1);
+        int r = (color1.R + color2.R) / 2;
+        int g = (color1.G + color2.G) / 2;
+        int b = (color1.B + color2.B) / 2;
+        return Color.FromArgb(r, g, b);
+    }
+}

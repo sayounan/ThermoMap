@@ -1,0 +1,97 @@
+{
+  "Files": [
+    {
+      "Id": "/home/thermo/tempserver/obj/Debug/net7.0/scopedcss/projectbundle/tempserver.bundle.scp.css",
+      "PackagePath": "staticwebassets/tempserver.bundle.scp.css"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/4 Transparent.png",
+      "PackagePath": "staticwebassets/4 Transparent.png"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/4_Transparent_3_32x32.png",
+      "PackagePath": "staticwebassets/4_Transparent_3_32x32.png"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/4_Transparent_5_16x16.png",
+      "PackagePath": "staticwebassets/4_Transparent_5_16x16.png"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/Sagittal.jpeg",
+      "PackagePath": "staticwebassets/Sagittal.jpeg"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/FONT-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/ICON-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/README.md",
+      "PackagePath": "staticwebassets/css/open-iconic/README.md"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.eot"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.otf"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.svg"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.ttf"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.woff"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/home/thermo/tempserver/wwwroot/scripts/custom.js",
+      "PackagePath": "staticwebassets/scripts/custom.js"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.tempserver.props",
+      "PackagePath": "build\\tempserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.tempserver.props",
+      "PackagePath": "buildMultiTargeting\\tempserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.tempserver.props",
+      "PackagePath": "buildTransitive\\tempserver.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.tempserver.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,7 @@
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.GeneratedMSBuildEditorConfig.editorconfig
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.AssemblyInfoInputs.cache
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.AssemblyInfo.cs
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.csproj.CoreCompileInputs.cache
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.MvcApplicationPartsAssemblyInfo.cache
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.RazorAssemblyInfo.cache
+/home/thermo/tempserver/obj/Debug/net7.0/ThermoMap.RazorAssemblyInfo.cs
