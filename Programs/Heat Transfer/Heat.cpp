@@ -29,9 +29,9 @@ void update_temperature(vector<double>& temp) {
 
     new_temp[0] = initial_temp;
     // Update r=0 assuming symmetry, derivative is zero
-    new_temp[0] = temp[0] + dt * alpha * (
+    /*new_temp[0] = temp[0] + dt * alpha * (
         (temp[1] - 2 * temp[0] + temp[1]) / (dr * dr)  // Symmetric condition
-    );
+    );*/
     temp = new_temp;
 }
 
