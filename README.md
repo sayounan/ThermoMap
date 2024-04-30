@@ -31,9 +31,10 @@ sphere.
 
 ### Dependencies
 
-<ins>**Click on your OS to get the corresponding .NET installation instructions.**</ins>
+***Click on your OS to get the corresponding .NET installation instructions.***
 
 <details><summary>Linux</summary><blockquote>
+
 **Ensure ssh is enabled before proceeding.**
 
 Install .NET:
