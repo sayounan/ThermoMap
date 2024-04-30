@@ -19,36 +19,62 @@ The software reads the temperature data from the point of digital sensor and is 
 behavior (motion in the x, y, z directions and time) of the heat radiating outward within the brain. The temperature is 
 depicted as realtime expanding concentric spheres, color coded to correspond to the temperature increase within each 
 sphere.
+
 ### Hardware Setup
 ![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Raspberry-Pi-5-Pinout-.jpg)
+
 #### Sensor &harr; Raspberry Pi GPIO Pins
 * VDD &harr; 3V3 Power
 * GND &harr; Ground
 * SDA &harr; GPIO 2 (SDA)
 * SCL &harr; GPIO 3 (SCL)
-#### Clinical Sensor Placement
-* Sensor is already embedded within the RF ablator.
+
 ### Dependencies
-Mono is needed to run .exe programs on Unix based systems like Linux and Mac
-#### Linux: [The Mono Project](https://www.mono-project.com)
-```angular2html
-sudo apt install dirmngr ca-certificates gnupg
-sudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
-```
-```angular2html
-sudo apt install mono-devel
-```
-#### MacOS: [The Mono Project](https://www.mono-project.com)
-[Download Instructions](https://www.mono-project.com/download/stable/#download-mac)
 
-#### Windows: N/A
+<ins>**Click on your OS to get the corresponding .NET installation instructions.**</ins>
+
+<details><summary>Linux</summary><blockquote>
+<span style="color:red">**Ensure ssh is enabled before proceeding.**</span>
+
+Install .NET:
+```angular2html
+curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel STS
+```
+
+Simplify Path Resolution:
+```angular2html
+echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Verify .NET Installation:
+```angular2html
+dotnet --version
+```
+</blockquote></details>
+
+<details><summary>MacOS</summary><blockquote>
+
+[![Button Icon]][Link]
+
+[Link]: #'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
+[Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
+
+</blockquote></details>
+
+<details><summary>Windows</summary><blockquote>
+
+[![Button Icon]][Link]
+
+[Link]: #'https://dotnet.microsoft.com/en-us/download/dotnet/8.0'
+[Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
+
+</blockquote></details>
+
 ### Software Setup
-1. Open the executable file.
-2. Click the MRI scan image to indicate the location of the heat source.
-3. Click the "Start Ablation" button to indicate the start of the ablation procedure and begin displaying temperature 
-behavior.
-
-
-https://learn.microsoft.com/en-us/dotnet/iot/deployment
+1. On your terminal, navigate to the directory containing the software.
+2. Run the following command: ```dotnet run```
+3. In your web browser enter ```localhost: 5232``` into the address bar and press enter.
+4. Click on "Connect"
+5. Click on the MRI image to indicate location of the heat source.
