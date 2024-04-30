@@ -56,19 +56,20 @@ dotnet --version
 
 <details><summary>MacOS</summary><blockquote>
 
-[Installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+[![Button Icon]][Link]
+
+[Link]: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
+[Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
 
 </blockquote></details>
 
 <details><summary>Windows</summary><blockquote>
 
-[Installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
 [![Button Icon]][Link]
-<!----------------------------------------------------------------------------->
+
 [Link]: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
-<!---------------------------------[ Buttons ]--------------------------------->
 [Button Icon]: https://img.shields.io/badge/Installation-EF2D5E?style=for-the-badge&logoColor=white&logo=DocuSign
+
 </blockquote></details>
 
 ### Software Setup
