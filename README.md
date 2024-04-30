@@ -49,3 +49,6 @@ sudo apt install mono-devel
 2. Click the MRI scan image to indicate the location of the heat source.
 3. Click the "Start Ablation" button to indicate the start of the ablation procedure and begin displaying temperature 
 behavior.
+
+
+https://learn.microsoft.com/en-us/dotnet/iot/deployment
