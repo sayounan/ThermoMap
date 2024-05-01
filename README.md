@@ -1,4 +1,7 @@
 # ThermoMap
+[Software Screenshot](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Software%20Screenshot.png)
+
+[UML](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/UML%20Diagram.png)
 ## Background
 ThermoMap is software built to continue the work of a previous year's design named Thermectrode. The intended use is to
 monitor the internal temperature of the brain during Radio Frequency (RF) ablation (burning/melting) procedures in the 
