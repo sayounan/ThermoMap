@@ -1,5 +1,5 @@
 # ThermoMap
-![Software Screenshot](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Software%20Screenshot.png)
+![Software GIF](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Software%20Demo.gif)
 
 ![UML](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/UML%20Diagram.png)
 ## Background
