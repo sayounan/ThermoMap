@@ -79,6 +79,6 @@ dotnet --version
 ### Software Setup
 1. On your terminal, navigate to the directory containing the software. ```cd /Path/to/software/location```
 2. Run the following command: ```dotnet run```
-3. In your web browser enter ```localhost: 5232``` into the address bar and press enter.
+3. In your web browser enter ```http://localhost:5232``` into the address bar and press enter.
 4. Click on "Connect"
 5. Click on the MRI image to indicate location of the heat source.
