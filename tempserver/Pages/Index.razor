@@ -18,8 +18,8 @@
         <defs>
             <radialGradient id="temperatureGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                 <stop offset="0%" style="stop-color: @(GetColorString(GetColorForTemperature(currentTemp))); stop-opacity:1" />
-                <stop offset="50%" style="stop-color: @(GetColorString(MidColor(currentTemp, outermostColor))); stop-opacity:0.7" />
-                <stop offset="100%" style="stop-color: @(GetColorString(outermostColor)); stop-opacity:0" />
+                <stop offset="50%" style="stop-color:@(GetColorString(GetColorForTemperature(temp[1]))); stop-opacity:0.7" />
+                <stop offset="100%" style="stop-color: @(GetColorString(GetColorForTemperature(temp[2]))); stop-opacity:0" />
             </radialGradient>
         </defs>
         <image xlink:href="Sagittal.jpeg" width="800" height="600" />
@@ -48,10 +48,10 @@
 <p>Temp is: @theTempC &#176C @theTempF &#176F </p>
 
 @code {
-    public double currentTemp = 0.0;
-    public double[] temp;
+    public double currentTemp = 15.0;
+    public double[] temp = new double[6];
     public double alpha = 0.14558;  // thermal diffusivity
-    public double dr = 0.020;      // radial distance step
+    public double dr = 0.040;      // radial distance step
     public double dt = 0.001;     // time step
     public int num_r = 6;      // number of radial points
     public string theTempC = string.Empty;
@@ -69,20 +69,28 @@
     private static extern int Read(int handle, byte[] data, int length);
     [DllImport("libc.so.6", EntryPoint = "write", SetLastError = true)]
     private static extern int Write(int handle, byte[] data, int length);
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i < num_r; i++)
+        {
+            temp[i] = currentTemp; // Set each element to currentTemp
+        }
+    }
     public async Task ToggleTemperatureReading()
     {
         isReadingTemperature = !isReadingTemperature;
 
         while (isReadingTemperature)
         {
-            await Task.Delay(TimeSpan.FromSeconds(0.25));
+            await Task.Delay(TimeSpan.FromSeconds(0.001));
             await GetTheTemp();
+            await Task.Run(() => UpdateTemperatureDistribution());
         }
     }
     public void HandleImageClick(MouseEventArgs e)
     {
         // Store the clicked position
-        clickedPosition = new PointF((float)e.ClientX, (float)e.ClientY);
+        clickedPosition = new PointF((float)e.OffsetX, (float)e.OffsetY);
 
         // Get temperature at clicked position
         outermostColor = GetColorForTemperature(currentTemp);
@@ -127,6 +135,7 @@
             currentTemp = tempc;
             theTempC = currentTemp.ToString("F3");
             theTempF = tempf.ToString("F3");
+            temp[0] = tempc;
             StateHasChanged();
         }
         catch (Exception e)
@@ -192,7 +201,10 @@
             }
 
             // Update the temperature array with the new values
-            temp = newTemp;
+            for (int i = 1; i < num_r - 1; ++i)
+            {
+                temp[i] = newTemp[i];
+            }
         }
 
     
