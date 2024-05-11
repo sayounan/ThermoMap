@@ -152,9 +152,9 @@ fabrication and assembly facility/facilities.</i>
 <details><summary>Backend Software: (Recommended Strengths: Programming and Mathematics focusing on differential 
 equations and linear algebra)</summary><blockquote>
 <p>
-Currently the software uses the One Dimensional Heat Equation in polar coordinates listed above. Here you can chose one 
+Currently the software uses the One Dimensional Heat Equation in polar coordinates listed above. Here you can choose one 
 of two tasks. Your task would be to either 1. use a more accurate mathematical model of the thermodynamics of the brain 
-and put it into this software or 2. to increase accuracy by rewriting the code to continue to perform at smaller time 
+and put it into this software or 2. increase accuracy by rewriting the code to continue to perform at smaller time 
 steps. The current code causes a mathematical divergence towards ±∞ at smaller time steps. One promising method is 
 implementing a Backward Euler Scheme or other vectorizations of the One Dimensional Heat Equation.
 </p>
