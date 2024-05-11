@@ -115,7 +115,8 @@ under step 1.2.***
       * These IP addresses remain the same for the same Wi-Fi router. They will change with different routers including 
       different Wi-Fi nodes of the same network.
 2. On the remote device (i.e. personal computer or laptop)
-   1. Run ```ssh -L 5232:localhost:5232 <ConfiguredNameOfRaspberryPi> @ <IPv4Address>```
+   1. Run ```ssh -L 5232:localhost:5232 <ConfiguredNameOfRaspberryPi> @ <IPv4Address>``` *Remove spaces around @ symbol 
+    and angle brackets before running.*
       * This uses IP tunneling to go straight to port 5232 of the RPi since that is where our software runs.
    2. Enter the Raspberry Pi password
    3. **Continue on this same device by following the steps in the 
@@ -127,34 +128,45 @@ To the teams who inherit this project from us, listed below are potential avenue
 *May this project bring you the fulfilment and excitement that would make your younger self look at you in awe.*
 
 <details><summary>Harware: (Recommended Strength: Electrical/Electronic Engineering)</summary><blockquote>
+<p>
 The components currently being used, incorporated into the build are small enough, with the exception of the AS6221, to
 fit inside the SEEG probe (0.8 mm internal diameter) built by the Thermectrode team. Your task would be to replace the 
 AS6221 (1.490 x 1.020 x 0.600 mm) with a slightly smaller digital temperature sensor while also maintaining the same 
 temperature reading accuracy and incorporate it into the SEEG built by the Thermectrode team. You are essentially tasked
 with combining the two products you have inherited into one.
-
-    We recommend this task for BS or MS students in Bioengineering or Electrical Engineering with access to a PCB fabrication and assembly facility/facilities.
+</p>
+<p>
+<i>We recommend this task for BS or MS students in Bioengineering or Electrical Engineering with access to a PCB 
+fabrication and assembly facility/facilities.</i>
+</p>
 </blockquote></details>
 
 <details><summary>Backend Software: (Recommended Strengths: Programming and Mathematics focusing on differential 
 equations and linear algebra)</summary><blockquote>
+<p>
 Currently the software uses the one dimensional heat equation in polar coordinates listed above. Here you can chose one 
 of two tasks. Your task would be to either 1. use a more accurate mathematical model of the thermodynamics of the brain 
 and put it into this software or 2. to increase accuracy by rewriting the code to continue to perform at smaller time 
 steps. The current code causes a mathematical divergence towards ±∞ at smaller time steps. One promising method is 
 implementing a Backward Euler Scheme or other vectorizations of the One Dimensional Heat Equation.
-
-    We recommend this task for BS, MS, or PhD students in Bioengineering, Computer Science, Mathematics, or Material Science.
+</p>
+<p>
+<i>We recommend this task for BS, MS, or PhD students in Bioengineering, Computer Science, Mathematics, or Material</i> 
+Science.
+</p>
 </blockquote></details>
 
 <details><summary>Frontend Software: (Recommended Strengths: Programming and Visual/Aesthetic Design)</summary><blockquote>
+<p>
 Currently the software looks fairly basic and needs to be started from the terminal and ran on a web browser. Your task
 here would be to streamline the operation of the software such as by making it compilable into a .app .exe or .deb that 
 the user simply has to click to use. That way it does not require use of a terminal and/or web browser to operate. When 
 that is complete you would have to redesign the UI to make it more visually appealing, easier to use, and logically 
 designed for its use case and use setting.
-
-    We recommend this task for BS students in Bioengineering or either BS or BA students in Computer Science.
+</p>
+<p>
+<i>We recommend this task for BS students in Bioengineering or either BS or BA students in Computer Science.</i>
+</p>
 </blockquote></details>
 
 *Special thanks to: Dr. Samuel DeStefano MD, Dr. Steven Lammers PhD, Dr. Eric Roth PhD, and the members of the 
