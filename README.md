@@ -169,5 +169,6 @@ designed for its use case and use setting.
 </p>
 </blockquote></details>
 
-*Special thanks to: Dr. Samuel DeStefano MD, Dr. Steven Lammers PhD, Dr. Eric Roth PhD, and the members of the 
-Thermectrode team from whom we inherited this project: Alyssa Moreno, Elise Carter, Jacob Bado, & Linea Gutierrez.*
+## Special thanks to: 
+*Dr. Samuel DeStefano MD, Dr. Steven Lammers PhD, Dr. Eric Roth PhD, and the members of the Thermectrode team from whom 
+we inherited this project: Alyssa Moreno, Elise Carter, Jacob Bado, & Linea Gutierrez.*
