@@ -112,7 +112,7 @@ under step 1.2.***
    1. Start the terminal.
    2. Run the following command ```hostname -I``` *This is a capital i, not a lower case L*.
       * This command returns two IP address versions, IPv4 and IPv6 respectively. IPv4 is used for the next steps.
-      * These IP addresses remain the same for the same Wi-Fi router. It will change with different routers including 
+      * These IP addresses remain the same for the same Wi-Fi router. They will change with different routers including 
       different Wi-Fi nodes of the same network.
 2. On the remote device (i.e. personal computer or laptop)
    1. Run ```ssh -L 5232:localhost:5232 ConfiguredNameOfRaspberryPi@IPv4Address```
