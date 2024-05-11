@@ -119,10 +119,12 @@ with combining the two products you have inherited into one.
 <details><summary>Backend Software: (Recommended Strengths: Programming and Mathematics focusing on differential 
 equations and linear algebra)</summary><blockquote>
 Currently the software uses the one dimensional heat equation in polar coordinates 
+
+</blockquote></details>
+
 $$
 \dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial ^2 u}{\partial x^2}
 $$
-</blockquote></details>
 
 *Special thanks to : Dr. Samuel DeStefano MD, Dr. Steve Lammers PhD, Dr. Eric Roth PhD, and the members of the 
 Thermectrode team from whom we inherited this project: Alyssa Moreno, Elise Carter, Jacob Bado, & Linea Gutierrez.*
