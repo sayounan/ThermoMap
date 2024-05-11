@@ -115,7 +115,7 @@ under step 1.2.***
       * These IP addresses remain the same for the same Wi-Fi router. They will change with different routers including 
       different Wi-Fi nodes of the same network.
 2. On the remote device (i.e. personal computer or laptop)
-   1. Run ```ssh -L 5232:localhost:5232 ConfiguredNameOfRaspberryPi@IPv4Address```
+   1. Run ```ssh -L 5232:localhost:5232 <ConfiguredNameOfRaspberryPi> @ <IPv4Address>```
       * This uses IP tunneling to go straight to port 5232 of the RPi since that is where our software runs.
    2. Enter the Raspberry Pi password
    3. **Continue on this same device by following the steps in the 
