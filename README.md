@@ -42,7 +42,7 @@ u_i^{n+1} = u_i^n + \Delta t \cdot \alpha \left( \frac{u_{i+1}^n - 2u_i^n + u_{i
 \frac{u_{i+1}^n - u_{i-1}^n}{2\Delta r} \right)
 $$
 
-
+## Operating Instructions
 ### Hardware Setup
 ![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Raspberry-Pi-5-Pinout-.jpg)
 
