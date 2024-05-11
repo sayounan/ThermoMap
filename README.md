@@ -15,8 +15,8 @@ Brian Shaver, Cassandra Gasser, & Sari Younan
 ## Background
 ThermoMap is software built to continue the work of a previous year's design named Thermectrode. The intended use is to
 monitor the internal temperature of the brain during Radio Frequency (RF) ablation (burning/melting) procedures in the 
-brain to treat Drug Resistant Epilepsy (DRE). The Thermectrode was a thermistor embedded Stereo-Electroencephalograph 
-(sEEG) that could monitor brain temperature while also reading EEG data during neuro-ablation procedures. The 
+brain to treat Drug Resistant Epilepsy (DRE). The Thermectrode was a thermistor embedded Stereo-Electroencephalography 
+(sEEG) probe that could monitor brain temperature while also reading EEG data during neuro-ablation procedures. The 
 Thermectrode fed the analog signal to an external circuit that filtered the signal and passed it onto a data acquisition 
 device which then passed it onto a computer via USB protocol. This was then displayed as a graph along with a numerical 
 temperature reading. 
