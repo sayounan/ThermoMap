@@ -36,7 +36,7 @@ $$
 \dfrac{\partial u}{\partial t} = \alpha\left(\dfrac{\partial ^2 u}{\partial r^2} +\dfrac{1}{r}\dfrac{\partial u}
 {\partial r}\right)
 $$
-#### Discretized One Dimensional Heat Equation
+#### Discretized Polar One Dimensional Heat Equation
 $$
 u_i^{n+1} = u_i^n + \Delta t \cdot \alpha \left( \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{(\Delta r)^2} + \frac{1}{r_i} 
 \frac{u_{i+1}^n - u_{i-1}^n}{2\Delta r} \right)
