@@ -4,6 +4,14 @@ Brian Shaver, Cassandra Gasser, & Sari Younan
 ![Software GIF](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Software%20Demo.gif)
 
 ![UML](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/UML%20Diagram.png)
+
+## Contents
+1. [Background](#Background)
+2. [Introduction](#Introduction)
+3. [Operating Instructions](#Operating-Instructions)
+4. [Future Steps](#Future-Steps)
+5. [Special Thanks](#Special-Thanks-to)
+
 ## Background
 ThermoMap is software built to continue the work of a previous year's design named Thermectrode. The intended use is to
 monitor the internal temperature of the brain during Radio Frequency (RF) ablation (burning/melting) procedures in the 
@@ -169,6 +177,6 @@ designed for its use case and use setting.
 </p>
 </blockquote></details>
 
-## Special thanks to: 
+## Special Thanks to:
 *Dr. Samuel DeStefano MD, Dr. Steven Lammers PhD, Dr. Eric Roth PhD, and the members of the Thermectrode team from whom 
 we inherited this project: Alyssa Moreno, Elise Carter, Jacob Bado, & Linea Gutierrez.*
