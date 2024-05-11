@@ -21,9 +21,27 @@ Circuit Board (PCB) connected directly to the Raspberry Pi's general purpose inp
 software is designed to give clinicians all the important information during a neuro-ablation procedure at a glance. The
 software shows the real time heat transfer within the brain overlaid on patient Magnetic Resonance Imaging (MRI) scans. 
 The software reads the temperature data from the point of digital sensor and is able to model the four dimensional 
-behavior (motion in the x, y, z directions and time) of the heat radiating outward within the brain. The temperature is 
-depicted as realtime expanding concentric spheres, color coded to correspond to the temperature increase within each 
-sphere.
+behavior (motion in the x, y, z directions and time) of the heat radiating outward within the brain. The model assumes 
+homogenous behavior of the heat in the brain and thus uses the one dimensional heat equation (listed below) in polar 
+coordinates. The temperature is depicted as realtime expanding concentric circles, color coded to correspond to the 
+temperature increase within each circle.
+
+### Heat Equations
+#### Linear One Dimensional Heat Equation 
+$$
+\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial ^2 u}{\partial x^2}
+$$
+#### Polar One Dimensional Heat Equation 
+$$
+\dfrac{\partial u}{\partial t} = \alpha\left(\dfrac{\partial ^2 u}{\partial r^2} +\dfrac{1}{r}\dfrac{\partial u}
+{\partial r}\right)
+$$
+#### Discretized One Dimensional Heat Equation
+$$
+u_i^{n+1} = u_i^n + \Delta t \cdot \alpha \left( \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{(\Delta r)^2} + \frac{1}{r_i} 
+\frac{u_{i+1}^n - u_{i-1}^n}{2\Delta r} \right)
+$$
+
 
 ### Hardware Setup
 ![Raspberry Pi GPIO Pinout](https://github.com/sayounan/ThermoMap/blob/main/Media/README%20Media/Raspberry-Pi-5-Pinout-.jpg)
@@ -103,7 +121,7 @@ under step 1.2.***
    3. **Continue on this same device by following the steps in the 
    [Local Connection Setup Instructions](#Local-to-the-Raspberry-Pi-Connection).**
 
-### Future Steps
+## Future Steps
 To the teams who inherit this project from us, listed below are potential avenues of development for the device.
 
 *May this project bring you the fulfilment and excitement that would make your younger self look at you in awe.*
@@ -114,17 +132,30 @@ fit inside the SEEG probe (0.8 mm internal diameter) built by the Thermectrode t
 AS6221 (1.490 x 1.020 x 0.600 mm) with a slightly smaller digital temperature sensor while also maintaining the same 
 temperature reading accuracy and incorporate it into the SEEG built by the Thermectrode team. You are essentially tasked
 with combining the two products you have inherited into one.
+
+    We recommend this task for BS or MS students in Bioengineering or Electrical Engineering with access to a PCB fabrication and assembly facility/facilities.
 </blockquote></details>
 
 <details><summary>Backend Software: (Recommended Strengths: Programming and Mathematics focusing on differential 
 equations and linear algebra)</summary><blockquote>
-Currently the software uses the one dimensional heat equation in polar coordinates 
+Currently the software uses the one dimensional heat equation in polar coordinates listed above. Here you can chose one 
+of two tasks. Your task would be to either 1. use a more accurate mathematical model of the thermodynamics of the brain 
+and put it into this software or 2. to increase accuracy by rewriting the code to continue to perform at smaller time 
+steps. The current code causes a mathematical divergence towards ±∞ at smaller time steps. One promising method is 
+implementing a Backward Euler Scheme or other vectorizations of the One Dimensional Heat Equation.
 
+    We recommend this task for BS, MS, or PhD students in Bioengineering, Computer Science, Mathematics, or Material Science.
 </blockquote></details>
 
-$$
-\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial ^2 u}{\partial x^2}
-$$
+<details><summary>Frontend Software: (Recommended Strengths: Programming and Visual/Aesthetic Design)</summary><blockquote>
+Currently the software looks fairly basic and needs to be started from the terminal and ran on a web browser. Your task
+here would be to streamline the operation of the software such as by making it compilable into a .app .exe or .deb that 
+the user simply has to click to use. That way it does not require use of a terminal and/or web browser to operate. When 
+that is complete you would have to redesign the UI to make it more visually appealing, easier to use, and logically 
+designed for its use case and use setting.
 
-*Special thanks to : Dr. Samuel DeStefano MD, Dr. Steve Lammers PhD, Dr. Eric Roth PhD, and the members of the 
+    We recommend this task for BS students in Bioengineering or either BS or BA students in Computer Science.
+</blockquote></details>
+
+*Special thanks to: Dr. Samuel DeStefano MD, Dr. Steven Lammers PhD, Dr. Eric Roth PhD, and the members of the 
 Thermectrode team from whom we inherited this project: Alyssa Moreno, Elise Carter, Jacob Bado, & Linea Gutierrez.*
