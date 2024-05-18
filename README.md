@@ -17,9 +17,9 @@ ThermoMap is software built to continue the work of a previous year's design nam
 monitor the internal temperature of the brain during Radio Frequency (RF) ablation (burning/melting) procedures in the 
 brain to treat Drug Resistant Epilepsy (DRE). The Thermectrode was a thermistor embedded Stereo-Electroencephalography 
 (sEEG) probe that could monitor brain temperature while also reading EEG data during neuro-ablation procedures. The 
-Thermectrode fed the analog signal to an external circuit that filtered the signal and passed it onto a data acquisition 
-device which then passed it onto a computer via USB protocol. This was then displayed as a graph along with a numerical 
-temperature reading. 
+Thermectrode fed the analog signals to an external circuit that filtered both analog signals (EEG and Temperature) and 
+passed them onto a data acquisition device which then passed it onto a computer via USB protocol. This was then 
+displayed as a graph along with a numerical temperature reading. 
 ## Introduction
 The ThermoMap team began by overhauling the hardware to digital circuitry. The primary purpose of this change was to 
 make the signal resistant to external electric or electromagnetic noise. An added benefit of the switch to digital 
