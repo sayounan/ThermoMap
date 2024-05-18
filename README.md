@@ -133,7 +133,7 @@ under step 1.2.***
 ## Future Steps
 To the teams who inherit this project from us, listed below are potential avenues of development for the device.
 
-*May this project bring you the fulfilment and excitement that would make your younger self look at you in awe.*
+*May this project bring you the fulfilment and excitement that would make your younger self look at you and say "This is who I want to be when I grow up."*
 
 <details><summary>Harware: (Recommended Strength: Electrical/Electronic Engineering)</summary><blockquote>
 <p>
