@@ -19,7 +19,7 @@ brain to treat Drug Resistant Epilepsy (DRE). The Thermectrode was a thermistor 
 (sEEG) probe that could monitor brain temperature while also reading EEG data during neuro-ablation procedures. The 
 Thermectrode fed the analog signals to an external circuit that filtered both analog signals (EEG and Temperature) and 
 passed them onto a data acquisition device which then passed it onto a computer via USB protocol. This was then 
-displayed as a graph along with a numerical temperature reading. 
+displayed as a graph for the EEG along with a numerical temperature reading. 
 ## Introduction
 The ThermoMap team began by overhauling the hardware to digital circuitry. The primary purpose of this change was to 
 make the signal resistant to external electric or electromagnetic noise. An added benefit of the switch to digital 
